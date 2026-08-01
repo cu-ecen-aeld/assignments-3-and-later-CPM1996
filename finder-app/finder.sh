@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 numFiles=0
 numMatches=0
@@ -8,9 +8,9 @@ function searchDir() {
 
     for file in $currentDirPath/*; do
         if [[ -f $file ]]; then
-            ((numFiles++))
+            let "numFiles += 1"
             numCurrentMatches=$(cat $file | grep -c $searchstr)
-            ((numMatches += numCurrentMatches))
+            let "numMatches += numCurrentMatches"
         elif [[ -d $file ]]; then
             searchDir $file
         fi
